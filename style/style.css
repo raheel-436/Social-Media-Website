@@ -2,7 +2,7 @@
   --color-white: #ffffff;
   --color-light: #f0eef6;
   --color-grey: #9e98b3;
-  --color-primary: #6b4ce6;
+  --color-primary: hsl(252, 75%, 60%);
   --color-secondary: #d6ccff;
   --color-success: #50fb50;
   --color-danger: #fb5050;
@@ -15,6 +15,7 @@
   --search-padding: 0.6rem 1rem;
   --card-padding: 1rem;
   --transition: all 300ms ease;
+  --box-shadow-transition: all 500ms ease;
 
   --sticky-top-left: 5.4rem;
   --sticky-top-right: -18rem;
@@ -194,7 +195,7 @@ main .container .left .profile {
 }
 
 .left .sidebar h3 {
-  color: var(--color-black); /*MODIFIED, can be later Removed*/
+  color: var(--color-dark); /*MODIFIED, can be later Removed*/
   margin-left: 1.5rem;
   font-size: 1rem;
 }
@@ -433,6 +434,7 @@ main .container .right {
   background-color: var(--color-white);
   border-radius: var(--card-border-radius);
   padding: var(--card-padding);
+  transition: var(--box-shadow-transition);
 }
 
 .right .messages .heading {
