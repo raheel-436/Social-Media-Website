@@ -1,6 +1,8 @@
 const menuItems = document.querySelectorAll(".menu-item");
 const messageNotification = document.querySelector("#messages-notification");
 const messages = document.querySelector(".messages");
+const message = document.querySelectorAll(".message");
+const messageSearchBox = document.querySelector("#message-search");
 
 /*-------------------------SIDEBAR------------------------------------*/
 //remove active class from all menu items
@@ -25,7 +27,23 @@ menuItems.forEach((item) => {
 });
 
 /*-------------------------Messages-----------------------------*/
+//search Message
+const searchMessage = () => {
+  const val = messageSearchBox.value.toLowerCase();
+  message.forEach((chat) => {
+    let name = chat.querySelector("h5").textContent.toLowerCase();
+    if (name.indexOf(val) != -1) {
+      chat.style.display = "flex";
+    } else {
+      chat.style.display = "none";
+    }
+  });
+};
 
+//search chat
+messageSearchBox.addEventListener("keyup", searchMessage);
+
+//highlights card When message menu Item is click
 messageNotification.addEventListener("click", () => {
   messages.style.boxShadow = "0 0 1rem var(--color-primary)";
   messageNotification.querySelector(".notification-count").style.display =
