@@ -10,8 +10,12 @@ const customizeThemeBox = document.querySelector(".customize-theme");
 /*---Fonts---*/
 const fontSizes = document.querySelectorAll(".choose-size span");
 let root = document.querySelector(":root");
-/*---Change Colors---*/
+/*---Colors---*/
 const colorPalette = document.querySelectorAll(".choose-color span");
+/*---Background---*/
+const bg1 = document.querySelector(".bg-1");
+const bg2 = document.querySelector(".bg-2");
+const bg3 = document.querySelector(".bg-3");
 
 /*-------------------------SIDEBAR------------------------------------*/
 //remove active class from all menu items
@@ -143,4 +147,48 @@ colorPalette.forEach((color) => {
 
     root.style.setProperty("--primary-color-hue", primaryHue);
   });
+});
+
+// Theme background
+let darkColorLightness;
+let lightColorLightness;
+let whiteColorLightness;
+
+//change bg colors
+const changeBg = () => {
+  root.style.setProperty("--light-color-lightness", lightColorLightness);
+  root.style.setProperty("--white-color-lightness", whiteColorLightness);
+  root.style.setProperty("--dark-color-lightness", darkColorLightness);
+};
+
+bg1.addEventListener("click", () => {
+  //add active class
+  bg1.classList.add("active");
+  bg2.classList.remove("active");
+  bg3.classList.remove("active");
+  window.location.reload();
+});
+
+bg2.addEventListener("click", () => {
+  darkColorLightness = "95%";
+  whiteColorLightness = "20%";
+  lightColorLightness = "15%";
+
+  //add active class
+  bg2.classList.add("active");
+  bg1.classList.remove("active");
+  bg3.classList.remove("active");
+  changeBg();
+});
+
+bg3.addEventListener("click", () => {
+  darkColorLightness = "95%";
+  whiteColorLightness = "10%";
+  lightColorLightness = "0%";
+
+  //add active class
+  bg3.classList.add("active");
+  bg1.classList.remove("active");
+  bg2.classList.remove("active");
+  changeBg();
 });
