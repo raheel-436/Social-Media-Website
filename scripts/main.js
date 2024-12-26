@@ -10,6 +10,8 @@ const customizeThemeBox = document.querySelector(".customize-theme");
 /*---Fonts---*/
 const fontSizes = document.querySelectorAll(".choose-size span");
 let root = document.querySelector(":root");
+/*---Change Colors---*/
+const colorPalette = document.querySelectorAll(".choose-color span");
 
 /*-------------------------SIDEBAR------------------------------------*/
 //remove active class from all menu items
@@ -78,7 +80,6 @@ const closeThemeCustomization = (e) => {
 customizeThemeBox.addEventListener("click", closeThemeCustomization);
 
 //Font Sizes
-
 const removeSizes = () => {
   fontSizes.forEach((size) => {
     size.classList.remove("active");
@@ -113,5 +114,33 @@ fontSizes.forEach((size) => {
       root.style.setProperty("----sticky-top-right", "-33rem");
     }
     document.querySelector("html").style.fontSize = fontSize;
+  });
+});
+
+//Change Primary Colors
+const removeColor = () => {
+  colorPalette.forEach((color) => {
+    color.classList.remove("active");
+  });
+};
+
+colorPalette.forEach((color) => {
+  color.addEventListener("click", () => {
+    removeColor();
+    color.classList.toggle("active");
+    let primaryHue;
+    if (color.classList.contains("color-1")) {
+      primaryHue = 252;
+    } else if (color.classList.contains("color-2")) {
+      primaryHue = 52;
+    } else if (color.classList.contains("color-3")) {
+      primaryHue = 352;
+    } else if (color.classList.contains("color-4")) {
+      primaryHue = 152;
+    } else if (color.classList.contains("color-5")) {
+      primaryHue = 202;
+    }
+
+    root.style.setProperty("--primary-color-hue", primaryHue);
   });
 });
